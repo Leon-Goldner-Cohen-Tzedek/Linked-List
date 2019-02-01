@@ -2,11 +2,11 @@
 using namespace std;
 
 template <class X>
-class LinkedList
+class Node
 {
 private:
   X* data;
-  LinkedList<X>* next;
+  Node<X>* next;
 
 public:
 
@@ -18,7 +18,7 @@ public:
     }
     else if (this->next == NULL)
     {
-      this->next = new LinkedList<X>(input);
+      this->next = new Node<X>(input);
     }
     else
     {
@@ -26,10 +26,28 @@ public:
     }
   }
 
+  void Insert(X data, int position)
+  {
+    if (this->data == NULL)
+    {
+      this->Add(data);
+    }
+
+    Node<X>* insert = new Node<X>(data);
+    Node<X>* temp = new Node<X>;
+
+    for (int i = 0; i < position; i++)
+    {
+      insert->next = temp->next;
+      temp->next = insert;
+    }
+  }
+
   X Data()
   {
     return *(this->data);
   }
+
   bool Empty()
   {
     return this->data == NULL;
@@ -40,7 +58,7 @@ public:
     return this->next == NULL;
   }
 
-  friend ostream& operator<<(ostream& stream, LinkedList& list)
+  friend ostream& operator<<(ostream& stream, Node& list)
   {
     if (list.Empty())
     {
@@ -59,13 +77,13 @@ public:
     return stream;
   }
 
-  LinkedList()
+  Node()
   {
     this->data = NULL;
     this->next = NULL;
   }
 
-  LinkedList(X input)
+  Node(X input)
   {
     this->data = new X(input);
     this->next = NULL;
