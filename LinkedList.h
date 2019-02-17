@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+#ifndef LINKEDLIST_H
+#define  LINKEDLIST_H
+
 template <class X>
 class Node
 {
@@ -16,41 +19,32 @@ public:
     {
       this->data = new X(input);
     }
-    else if (this->next == NULL)
-    {
-      this->next = new Node<X>(input);
-    }
     else
     {
-      this->next->Add(input);
+      Node<X>* added = new Node<X>(*(this->data), this->next);
+      *(this->data) = input;
+      this->next = added;
     }
   }
 
   void Insert(X data, int position)
   {
-    if (this->data == NULL)
+    if (position == 0)
     {
       this->Add(data);
     }
-
-    Node<X>* insert = new Node<X>;
-    Node<X>* current = new Node<X>;
-    Node<X>* next = new Node<X>;
-    Node<X>* previous = new Node<X>;
-
-    insert->Add(data);// can just instantiate insert with data, but this is nicer to look at . . .
-
-    previous = this->next;
-
-    for (int i = 0; i < position; i++)
+    else
     {
-      current = previous->next;
-      previous = current;
-      current->next = next;
+      if (this->next == NULL)
+      {
+        this->next = new Node<X>(data);
+      }
+      else
+      {
+        this->next->Insert(data, position - 1);
+      }
 
     }
-    previous->next = insert;
-    insert->next = next;
   }
 
   X Data()
@@ -98,4 +92,12 @@ public:
     this->data = new X(input);
     this->next = NULL;
   }
+
+  Node(X input, Node* next)
+  {
+    this->data = new X(input);
+    this->next = next;
+  }
 };
+
+#endif

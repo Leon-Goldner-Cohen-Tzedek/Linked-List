@@ -15,7 +15,7 @@ int main()
 
   cout << *list << endl;
 
-  list->Insert(33, 5);
+  list->Insert(33, 7);
 
   cout << *list << endl;
 
