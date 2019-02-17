@@ -33,14 +33,24 @@ public:
       this->Add(data);
     }
 
-    Node<X>* insert = new Node<X>(data);
-    Node<X>* temp = new Node<X>;
+    Node<X>* insert = new Node<X>;
+    Node<X>* current = new Node<X>;
+    Node<X>* next = new Node<X>;
+    Node<X>* previous = new Node<X>;
+
+    insert->Add(data);// can just instantiate insert with data, but this is nicer to look at . . .
+
+    previous = this->next;
 
     for (int i = 0; i < position; i++)
     {
-      insert->next = temp->next;
-      temp->next = insert;
+      current = previous->next;
+      previous = current;
+      current->next = next;
+
     }
+    previous->next = insert;
+    insert->next = next;
   }
 
   X Data()
