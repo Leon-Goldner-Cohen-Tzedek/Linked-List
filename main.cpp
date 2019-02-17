@@ -19,5 +19,12 @@ int main()
 
   cout << *list << endl;
 
+  list->Remove();
+
+  cout << *list << endl;
+
+  list->Remove(5);
+
+  cout << *list << endl;
   return 0;
 }

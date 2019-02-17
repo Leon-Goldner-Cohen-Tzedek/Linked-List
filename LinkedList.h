@@ -43,8 +43,34 @@ public:
       {
         this->next->Insert(data, position - 1);
       }
-
     }
+  }
+
+  void Remove()
+  {
+    delete this->data;
+
+    if (this->next == NULL)
+    {
+      this->data = NULL;
+    }
+    else
+    {
+      this->data = this->next->data;
+      this->next = this->next->next;
+    }
+  }
+
+  void Remove(int position)
+  {
+     if (position == 0)
+     {
+       Remove();
+     }
+     else
+     {
+       this->next->Remove(position - 1);
+     }
   }
 
   X Data()
