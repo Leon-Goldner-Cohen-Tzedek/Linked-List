@@ -4,6 +4,7 @@
 A linked list for C++
 
 Example code and what it does:
+
 '''
 Node<int>* list = new Node<int>(); //creates a new empty node that holds ints
 
