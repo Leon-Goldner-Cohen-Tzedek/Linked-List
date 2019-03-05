@@ -1,0 +1,4 @@
+language: cpp
+os: linux
+compiler: g++
+script: g++ LinkedList.h  
