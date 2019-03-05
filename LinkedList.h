@@ -73,6 +73,22 @@ public:
      }
   }
 
+  bool Contains(X key)
+  {
+    if (this->next == NULL)
+    {
+      return false;
+    }
+    else if (*(this->data) == key)
+    {
+      return true;
+    }
+    else
+    {
+      this->next->Contains(key);
+    }
+  }
+
   X Data()
   {
     return *(this->data);
@@ -107,6 +123,18 @@ public:
     return stream;
   }
 
+  void operator=(Node& a)
+  {
+    if (this->next == NULL)
+    {
+      return;
+    }
+    else
+    {
+      a->next->data = this->next->data;
+    }
+  }
+
   Node()
   {
     this->data = NULL;
@@ -123,6 +151,18 @@ public:
   {
     this->data = new X(input);
     this->next = next;
+  }
+
+  ~Node()
+  {
+    if (this == NULL)
+    {
+      return;
+    }
+    else
+    {
+      this->next->~Node();
+    }
   }
 };
 
