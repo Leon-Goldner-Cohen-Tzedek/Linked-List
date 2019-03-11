@@ -4,6 +4,10 @@ using namespace std;
 #ifndef LINKEDLIST_H
 #define  LINKEDLIST_H
 
+class ListException : public exception {}; // I AM NOT SURE WHERE TO ADD THESE
+
+class ListAllocationException : public ListException {} AllocationException;
+
 template <class X>
 class Node
 {
@@ -155,14 +159,27 @@ public:
 
   Node(X input)
   {
-    this->data = new X(input);
-    this->next = NULL;
+    try
+    {
+      this->data = new X(input);
+      this->next = NULL;
+      if (*(this->data) != input) throw ListAllocationExce1ption;
+    }
+
+    catch (ListAllocationException e){cout << "ListAllocationException" << endl;}
   }
 
   Node(X input, Node* next)
   {
-    this->data = new X(input);
-    this->next = next;
+    try
+    {
+      this->data = new X(input);
+      if (*(this->data) != input) throw ListAllocationException;
+    }
+
+    catch (ListAllocationException e){cout << "ListAllocationException" << endl;}
+
+    this->next = next; //I do not know how to test for this so I won't do error handling on this
   }
 
   // ~Node() HELP ME GRANT
