@@ -89,6 +89,18 @@ public:
     }
   }
 
+  int Size(int size = 1)
+  {
+    if (this->End())
+    {
+      return size;
+    }
+    else
+    {
+      this->next->Size(size + 1);
+    }
+  }
+
   X Data()
   {
     return *(this->data);
@@ -153,17 +165,18 @@ public:
     this->next = next;
   }
 
-  ~Node()
-  {
-    if (this == NULL)
-    {
-      return;
-    }
-    else
-    {
-      this->next->~Node();
-    }
-  }
+  // ~Node() HELP ME GRANT
+  // {
+  //   if (this == NULL)
+  //   {
+  //     return;
+  //   }
+  //   else
+  //   {
+  //     delete this->data;
+  //     this->
+  //   }
+  // }
 };
 
 #endif

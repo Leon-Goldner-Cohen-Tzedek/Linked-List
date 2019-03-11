@@ -14,6 +14,8 @@ list->Insert(data, position); //adds data to of the right type to the position i
 
 list->Remove(position); //deletes the data in that position
 
+int x = list->Size(); //makes x equal to the size of the list. Make sure to store it to a variable, it does weird things if you do not
+
 bool y = list->Contains(value); //returns true if the value is in the list. Make sure to store it to a variable, it does weird things if you do not
 
 list->Data(); //returns the data in the current node
