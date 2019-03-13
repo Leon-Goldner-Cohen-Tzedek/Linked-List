@@ -163,10 +163,9 @@ public:
     {
       this->data = new X(input);
       this->next = NULL;
-      if (*(this->data) != input) throw ListAllocationExce1ption;
     }
-
     catch (ListAllocationException e){cout << "ListAllocationException" << endl;}
+    
   }
 
   Node(X input, Node* next)
@@ -174,9 +173,7 @@ public:
     try
     {
       this->data = new X(input);
-      if (*(this->data) != input) throw ListAllocationException;
     }
-
     catch (ListAllocationException e){cout << "ListAllocationException" << endl;}
 
     this->next = next; //I do not know how to test for this so I won't do error handling on this
