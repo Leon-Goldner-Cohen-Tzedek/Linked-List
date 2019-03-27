@@ -1,4 +1,4 @@
 language: cpp
 os: linux
 compiler: g++
-script: g++ LinkedList.h  
+script: g++ LinkedList.h LinkedStack

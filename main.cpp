@@ -1,22 +1,18 @@
 #include <iostream>
 #include "LinkedList.h"
+#include "LinkedStack.h"
 using namespace std;
 
 int main()
 {
 
+  LinkedStack<int> testStack;
 
-  Node<int>* list = new Node<int>();
+  testStack.Push(1);
+  testStack.Push(2);
+  cout << testStack.Pop() << endl;
+  cout << testStack.Pop() << endl;
+  testStack.Peek();
+  testStack.Pop();
 
-  for (int i = 0; i < 10; i++)
-  {
-    list->Add(i);
-  }
-
-  cout << *list << endl;
-
-  int a = list->Size();
-  cout << a << endl;
-
-  return 0;
 }
